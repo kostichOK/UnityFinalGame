@@ -3,14 +3,11 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    [Header("Патруль")]
     public PointsManager pointsManager;
     private int currentPointIndex = 0;
 
-    [Header("Навигация")]
     private NavMeshAgent agent;
 
-    [Header("Игрок и зрение")]
     public Transform player;
     public float visionRange = 10f;
     public int rayCount = 10;
