@@ -1,4 +1,6 @@
-﻿using Unity.VisualScripting;
+﻿using System;
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ItemInspection : MonoBehaviour
@@ -17,17 +19,23 @@ public class ItemInspection : MonoBehaviour
     private Quaternion originalRot;
     private bool inspecting;
     public GameObject pointLight;
+    public GameObject cursorNormal;
+    public GameObject cursorSee;
+    bool itemReady = false;
 
     void Update()
     {
         if (!inspecting)
         {
             Ray ray = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+            cursorNormal.SetActive(true);
+            cursorSee.SetActive(false);
             if (Physics.Raycast(ray, out RaycastHit hit, 3f, interactLayer))
             {
-                if (Input.GetKeyDown(KeyCode.E))
+                cursorNormal.SetActive(false);
+                cursorSee.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.E) && !inspecting)
                 {
-
                     StartCoroutine(StartInspect(hit.transform));
                 }
             }
@@ -45,25 +53,37 @@ public class ItemInspection : MonoBehaviour
                 StartCoroutine(EndInspect());
             }
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && itemReady)
             {
-                Destroy(currentItem.gameObject);
-                pointLight.SetActive(false);
-
-                Time.timeScale = 1f;
-                postProcessVolume.SetActive(false);
-                playerMovement.enabled = true;
-                playerLook.enabled = true;
-
-                inspecting = false;
-                currentItem = null;
+                Inventory inventory = FindAnyObjectByType<Inventory>();
+                Item item = currentItem.GetComponent<Item>();
+                itemReady = false;  
+                if (inventory != null)
+                if (item != null)
+                    if (inventory.AddItem(item.itemName, item.Icon))
+                    {
+                        Destroy(currentItem.gameObject);
+                        pointLight.SetActive(false);
+                        Time.timeScale = 1f;
+                        postProcessVolume.SetActive(false);
+                        playerMovement.enabled = true;
+                        playerLook.enabled = true;
+                        inspecting = false;
+                        currentItem = null;
+                    }
+                    else
+                    {
+                        Debug.Log("Инвентарь полон! Предмет не добавлен.");
+                    }
             }
         }
     }
 
-    System.Collections.IEnumerator StartInspect(Transform item)
+    public System.Collections.IEnumerator StartInspect(Transform item)
     {
+        cursorSee.SetActive(false);
         inspecting = true;
+
         currentItem = item;
         originalPos = item.position;
         originalRot = item.rotation;
@@ -79,6 +99,7 @@ public class ItemInspection : MonoBehaviour
 
         // Плавная анимация
         float t = 0;
+        
         while (t < 1f)
         {
             t += Time.unscaledDeltaTime * moveSpeed;
@@ -86,10 +107,13 @@ public class ItemInspection : MonoBehaviour
             currentItem.rotation = Quaternion.Slerp(originalRot, inspectPoint.rotation, t);
             yield return null;
         }
+        itemReady = true;
     }
 
-    System.Collections.IEnumerator EndInspect()
+    public System.Collections.IEnumerator EndInspect()
     {
+        itemReady = false;
+        
         float t = 0;
         Vector3 startPos = currentItem.position;
         Quaternion startRot = currentItem.rotation;

@@ -6,6 +6,8 @@ public class PlayerCatch : MonoBehaviour
     public LayerMask itemLayer;
 
     private Camera cam;
+    public GameObject cursorNormal;
+    public GameObject cursorSee;
 
     void Start()
     {
@@ -22,6 +24,8 @@ public class PlayerCatch : MonoBehaviour
         {
             Debug.DrawLine(ray.origin, hit.point, Color.green); // до объекта
             Debug.Log("Можно подобрать: " + hit.collider.name);
+            cursorNormal.SetActive(false);
+            cursorSee.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.E))
             {
