@@ -1,20 +1,19 @@
 ﻿using UnityEngine;
 
-public class Interactable : MonoBehaviour
+public class Interactble : MonoBehaviour
 {
-    [SerializeField] private string requiredName; // имя предмета, который нужен (например "Key1")
+    public string requiredKeyName; // имя ключа (например, "Key1")
 
-    public bool TryUse(string itemName)
+    private bool isOpen = false;
+
+    public void Open()
     {
-        if (itemName == requiredName)
-        {
-            Debug.Log($"{requiredName} использован на {gameObject.name}");
-            return true;
-        }
-        else
-        {
-            Debug.Log($"Предмет {itemName} не подходит для {gameObject.name}");
-            return false;
-        }
+        if (isOpen) return;
+
+        isOpen = true;
+        Debug.Log("Дверь открыта ключом: " + requiredKeyName);
+
+        // Здесь добавь анимацию или просто открой дверь
+        transform.Rotate(0, 90, 0); // временно — просто поворот
     }
 }

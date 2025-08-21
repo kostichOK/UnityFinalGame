@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class ItemInspection : MonoBehaviour
@@ -15,6 +16,7 @@ public class ItemInspection : MonoBehaviour
     public MonoBehaviour playerLook;     
 
     private Transform currentItem;
+    private GameObject currentItems;
     private Vector3 originalPos;
     private Quaternion originalRot;
     private bool inspecting;
@@ -22,7 +24,10 @@ public class ItemInspection : MonoBehaviour
     public GameObject cursorNormal;
     public GameObject cursorSee;
     bool itemReady = false;
+    public HoldItem holdItem;
+    public bool handOcuped = false;
 
+    
     void Update()
     {
         if (!inspecting)
@@ -30,57 +35,54 @@ public class ItemInspection : MonoBehaviour
             Ray ray = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
             cursorNormal.SetActive(true);
             cursorSee.SetActive(false);
+
             if (Physics.Raycast(ray, out RaycastHit hit, 3f, interactLayer))
             {
                 cursorNormal.SetActive(false);
                 cursorSee.SetActive(true);
-                if (Input.GetKeyDown(KeyCode.E) && !inspecting)
+
+                if (Input.GetKeyDown(KeyCode.E))
                 {
-                    StartCoroutine(StartInspect(hit.transform));
+                    
+                    if (hit.transform != null)
+                        StartCoroutine(StartInspect(hit.transform));
                 }
             }
         }
         else
         {
             // Вращение предмета мышкой
-            float rotX = -Input.GetAxis("Mouse X") * rotateSpeed * Time.unscaledDeltaTime;
-            float rotY = Input.GetAxis("Mouse Y") * rotateSpeed * Time.unscaledDeltaTime;
-            currentItem.Rotate(playerCam.transform.up, rotX, Space.World);
-            currentItem.Rotate(playerCam.transform.right, rotY, Space.World);
+            if (currentItem != null)
+            {
+                float rotX = -Input.GetAxis("Mouse X") * rotateSpeed * Time.unscaledDeltaTime;
+                float rotY = Input.GetAxis("Mouse Y") * rotateSpeed * Time.unscaledDeltaTime;
+                currentItem.Rotate(playerCam.transform.up, rotX, Space.World);
+                currentItem.Rotate(playerCam.transform.right, rotY, Space.World);
+            }
 
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
                 StartCoroutine(EndInspect());
             }
 
+            // Поднять предмет
             if (Input.GetKeyDown(KeyCode.E) && itemReady)
             {
-                Inventory inventory = FindAnyObjectByType<Inventory>();
-                Item item = currentItem.GetComponent<Item>();
-                itemReady = false;  
-                if (inventory != null)
-                if (item != null)
-                    if (inventory.AddItem(item.itemName, item.Icon))
-                    {
-                        Destroy(currentItem.gameObject);
-                        pointLight.SetActive(false);
-                        Time.timeScale = 1f;
-                        postProcessVolume.SetActive(false);
-                        playerMovement.enabled = true;
-                        playerLook.enabled = true;
-                        inspecting = false;
-                        currentItem = null;
-                    }
-                    else
-                    {
-                        Debug.Log("Инвентарь полон! Предмет не добавлен.");
-                    }
+                if (handOcuped) { return; }
+                if (currentItems != null)
+                {
+                    holdItem.Hold(currentItems); // здесь точно не будет null
+                    handOcuped = true;
+                }
+
+                ResetInspection();
             }
         }
     }
 
     public System.Collections.IEnumerator StartInspect(Transform item)
     {
+        currentItems = item.gameObject;
         cursorSee.SetActive(false);
         inspecting = true;
 
@@ -89,7 +91,7 @@ public class ItemInspection : MonoBehaviour
         originalRot = item.rotation;
 
         if (item.TryGetComponent<Rigidbody>(out Rigidbody rb))
-            rb.isKinematic = true;
+            rb.useGravity = false;
 
         Time.timeScale = 0f;
         postProcessVolume.SetActive(true);
@@ -107,6 +109,8 @@ public class ItemInspection : MonoBehaviour
             currentItem.rotation = Quaternion.Slerp(originalRot, inspectPoint.rotation, t);
             yield return null;
         }
+
+
         itemReady = true;
     }
 
@@ -138,5 +142,18 @@ public class ItemInspection : MonoBehaviour
 
         inspecting = false;
         currentItem = null;
+    }
+
+    public void ResetInspection()
+    {
+        itemReady = false;
+        pointLight.SetActive(false);
+        Time.timeScale = 1f;
+        postProcessVolume.SetActive(false);
+        playerMovement.enabled = true;
+        playerLook.enabled = true;
+        inspecting = false;
+        currentItem = null;
+        currentItems = null;
     }
 }

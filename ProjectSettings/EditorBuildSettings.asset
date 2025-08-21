@@ -11,8 +11,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FactoryNight.unity
     guid: 88b57fe4c076c5149bffb0a257a20ee1
-  - enabled: 1
-    path: Assets/Scenes/Main scene.unity
-    guid: 7b657c2c96dc1e3478732dd9948f050d
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

@@ -5,33 +5,32 @@ public class PlayerUse : MonoBehaviour
     [SerializeField] private Camera cam;
     [SerializeField] private float distance = 3f;
     [SerializeField] private LayerMask interactMask;
-    [SerializeField] private Inventory inventory;
+    [SerializeField] private HoldItem holdItem; // наш скрипт для предметов в руках
+    public ItemInspection inspection;
 
     private void Update()
     {
         // ЛКМ — использовать предмет
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)); // центр экрана
             if (Physics.Raycast(ray, out RaycastHit hit, distance, interactMask))
             {
-                Interactable interact = hit.collider.GetComponent<Interactable>();
-                if (interact != null)
-                {
-                    // Берём имя предмета, который выбран в инвентаре
-                    string itemName = inventory.GetItemName(inventory.currentIndex);
+                // Проверяем, есть ли в руках предмет
+                GameObject currentItem = holdItem.GetCurrentItem();
+                if (currentItem == null) return;
 
-                    if (!string.IsNullOrEmpty(itemName))
+                // Проверяем, что объект, в который тыкаем — дверь
+                Interactble door = hit.collider.GetComponent<Interactble>();
+                if (door != null)
+                {
+                    // Если у двери ключ совпадает с названием предмета
+                    if (door.requiredKeyName == currentItem.name)
                     {
-                        bool used = interact.TryUse(itemName);
-                        if (used)
-                        {
-                            inventory.RemoveItem(inventory.currentIndex);
-                        }
-                    }
-                    else
-                    {
-                        Debug.Log("В руках нет предмета!");
+                        currentItem.SetActive(false);
+                        door.Open();
+                        holdItem.Release(); // выбрасываем/убираем ключ (по желанию)
+                        inspection.handOcuped = false;
                     }
                 }
             }
