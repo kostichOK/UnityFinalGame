@@ -17041,11 +17041,11 @@ Transform:
   m_GameObject: {fileID: 2030126248}
   serializedVersion: 2
   m_LocalRotation: {x: -0.42006218, y: 0.45188272, z: -0.5454988, w: 0.56725734}
-  m_LocalPosition: {x: 0.7119993, y: 0.23600003, z: 0.52599925}
+  m_LocalPosition: {x: 0.6889993, y: -0.44399998, z: 0.85599923}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2066578861}
+  m_Father: {fileID: 1312544487}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2044994062
 PrefabInstance:
@@ -19011,6 +19011,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 88240519124921960, guid: a4fbbedfe3657904ca25d0e06f2f374c, type: 3}
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 88240519124921960, guid: a4fbbedfe3657904ca25d0e06f2f374c, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 88240519124921960, guid: a4fbbedfe3657904ca25d0e06f2f374c, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1818562565312214533, guid: a4fbbedfe3657904ca25d0e06f2f374c, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -19125,8 +19137,16 @@ PrefabInstance:
       value: prf_v_key_04
       objectReference: {fileID: 0}
     - target: {fileID: 8119655254190357896, guid: 0223bf9b95ee04f43a821edda7108058, type: 3}
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8119655254190357896, guid: 0223bf9b95ee04f43a821edda7108058, type: 3}
       propertyPath: m_UseGravity
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8119655254190357896, guid: 0223bf9b95ee04f43a821edda7108058, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8119655254190357896, guid: 0223bf9b95ee04f43a821edda7108058, type: 3}
       propertyPath: m_IsKinematic
@@ -19285,15 +19305,15 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 1287218261928866904, guid: 027ceb0e15eed734b8adbbc83d44ef06, type: 3}
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 879976261365508024, guid: 027ceb0e15eed734b8adbbc83d44ef06, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2030126249}
     - targetCorrespondingSourceObject: {fileID: 5103964377218893111, guid: 027ceb0e15eed734b8adbbc83d44ef06, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1497974140}
     - targetCorrespondingSourceObject: {fileID: 5103964377218893111, guid: 027ceb0e15eed734b8adbbc83d44ef06, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1591386941}
+    - targetCorrespondingSourceObject: {fileID: 5103964377218893111, guid: 027ceb0e15eed734b8adbbc83d44ef06, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2030126249}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2640504345914925615, guid: 027ceb0e15eed734b8adbbc83d44ef06, type: 3}
       insertIndex: 4

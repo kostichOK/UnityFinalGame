@@ -27,14 +27,20 @@ public class HoldItem : MonoBehaviour
         }
 
         currentItem = newItem;
+
+        // фиксируем у руки
         currentItem.transform.SetParent(holdPoint);
         currentItem.transform.localPosition = Vector3.zero;
-        currentItem.transform.localRotation = Quaternion.Euler(-193, 4, 192); // подгон под руку
+        currentItem.transform.localRotation = Quaternion.Euler(-193, 4, 192);
 
         if (currentItem.TryGetComponent<Rigidbody>(out Rigidbody rb))
         {
-            
+            // полностью отключаем физику, чтобы НЕ мешала
+            rb.isKinematic = true;
+            rb.useGravity = false;
             rb.detectCollisions = false;
+
+            // очень важно — обнуляем скорость
         }
     }
 
@@ -46,25 +52,23 @@ public class HoldItem : MonoBehaviour
             currentItem.transform.SetParent(null);
         }
         currentItem = null;
+        inspection.handOcuped = false; 
     }
-    
+
     public void Drop(float force = 5f)
     {
         if (currentItem != null)
         {
-            inspection.handOcuped = false;
             var rb = currentItem.GetComponent<Rigidbody>();
             currentItem.transform.SetParent(null);
 
             if (rb != null)
             {
-
-                rb.isKinematic = false;   // включаем физику
-                rb.useGravity = true;     // включаем гравитацию
+                inspection.handOcuped = false;
+                rb.isKinematic = false;
+                rb.useGravity = true;
                 rb.detectCollisions = true;
 
-                rb.interpolation = RigidbodyInterpolation.Interpolate;
-                rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
                 rb.AddForce(Camera.main.transform.forward * force, ForceMode.Impulse);
             }
