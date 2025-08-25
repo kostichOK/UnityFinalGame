@@ -6,10 +6,25 @@ public class HoldItem : MonoBehaviour
     private GameObject currentItem; // предмет, который держим
     public ItemInspection inspection;
 
+    private static HoldItem instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Update()
     {
         // выбросить предмет по Q
-        if (Input.GetKeyDown(KeyCode.Q) && currentItem != null)
+        if (Input.GetKeyDown(KeyCode.G) && currentItem != null)
         {
             Drop();
         }
@@ -40,7 +55,6 @@ public class HoldItem : MonoBehaviour
             rb.useGravity = false;
             rb.detectCollisions = false;
 
-            // очень важно — обнуляем скорость
         }
     }
 
@@ -52,7 +66,9 @@ public class HoldItem : MonoBehaviour
             currentItem.transform.SetParent(null);
         }
         currentItem = null;
-        inspection.handOcuped = false; 
+        inspection.currentItems = null;
+        inspection.handOcuped = false;
+        inspection.itemReady = false;
     }
 
     public void Drop(float force = 5f)
@@ -74,6 +90,9 @@ public class HoldItem : MonoBehaviour
             }
 
             currentItem = null;
+            inspection.currentItems = null;
+            inspection.handOcuped = false;
+            inspection.itemReady = false;
         }
     }
 

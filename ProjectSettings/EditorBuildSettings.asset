@@ -6,16 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Cementery.unity
+    path: Assets/-Scenes/Cementery.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/FactoryNight.unity
+    path: Assets/-Scenes/FactoryNight.unity
     guid: 88b57fe4c076c5149bffb0a257a20ee1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main scene.unity
     guid: 7b657c2c96dc1e3478732dd9948f050d
   - enabled: 1
-    path: Assets/Scenes/The shed.unity
+    path: Assets/-Scenes/The shed.unity
     guid: e0e6534b941fc0440b3fe559325ff2ad
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

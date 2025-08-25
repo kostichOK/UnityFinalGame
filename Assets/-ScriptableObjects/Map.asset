@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c71815d8b6d1c4f8c5544d0e6ce407, type: 3}
   m_Name: Map
   m_EditorClassIdentifier: 
-  mapActive: 0
-  closeMap: 1
+  mapActive: 1
+  closeMap: 0

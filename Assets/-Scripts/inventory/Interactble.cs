@@ -3,7 +3,7 @@
 public class Interactble : MonoBehaviour
 {
     public string requiredKeyName; // имя ключа (например, "Key1")
-
+    public Animator animator;
     private bool isOpen = false;
 
     public void Open()
@@ -12,8 +12,6 @@ public class Interactble : MonoBehaviour
 
         isOpen = true;
         Debug.Log("Дверь открыта ключом: " + requiredKeyName);
-
-        // Здесь добавь анимацию или просто открой дверь
-        transform.Rotate(0, 90, 0); // временно — просто поворот
+        animator.SetTrigger("OpenChest");
     }
 }

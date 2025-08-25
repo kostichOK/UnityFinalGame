@@ -16,14 +16,14 @@ public class ItemInspection : MonoBehaviour
     public MonoBehaviour playerLook;     
 
     private Transform currentItem;
-    private GameObject currentItems;
+    public GameObject currentItems;
     private Vector3 originalPos;
     private Quaternion originalRot;
     private bool inspecting;
     public GameObject pointLight;
     public GameObject cursorNormal;
     public GameObject cursorSee;
-    bool itemReady = false;
+    public bool itemReady = false;
     public HoldItem holdItem;
     public bool handOcuped = false;
 
@@ -42,10 +42,12 @@ public class ItemInspection : MonoBehaviour
                 cursorSee.SetActive(true);
 
                 if (Input.GetKeyDown(KeyCode.E))
-                {
-                    
+                {    
                     if (hit.transform != null)
+                    {
+                        Debug.Log(hit.transform);
                         StartCoroutine(StartInspect(hit.transform));
+                    } 
                 }
             }
         }

@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController characterController;
 
     private bool canMove = true;
-    private float walkSpeedRef;
+    public float walkSpeedRef;
     private float runSpeedRef;
 
     void Start()

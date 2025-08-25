@@ -8,13 +8,17 @@ public class PlayerUse : MonoBehaviour
     [SerializeField] private HoldItem holdItem; // наш скрипт для предметов в руках
     public ItemInspection inspection;
 
+    public GameObject cursorNormal;
+    public GameObject cursorSee;
+
     private void Update()
     {
-        // ЛКМ — использовать предмет
-        if (Input.GetMouseButtonDown(0))
+        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)); // центр экрана
+        if (Physics.Raycast(ray, out RaycastHit hit, distance, interactMask))
         {
-            Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)); // центр экрана
-            if (Physics.Raycast(ray, out RaycastHit hit, distance, interactMask))
+            cursorNormal.SetActive(false);
+            cursorSee.SetActive(true);
+            if (Input.GetMouseButtonDown(0))
             {
                 // Проверяем, есть ли в руках предмет
                 GameObject currentItem = holdItem.GetCurrentItem();
@@ -31,9 +35,12 @@ public class PlayerUse : MonoBehaviour
                         door.Open();
                         holdItem.Release(); // выбрасываем/убираем ключ (по желанию)
                         inspection.handOcuped = false;
+                        cursorNormal.SetActive(true);
+                        cursorSee.SetActive(false);
                     }
                 }
             }
+                
         }
     }
 }
