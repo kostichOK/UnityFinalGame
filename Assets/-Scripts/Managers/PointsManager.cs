@@ -1,19 +1,44 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PointsManager : MonoBehaviour
 {
-    [SerializeField] Transform pathParent;
-    List<Vector3> positions = new List<Vector3>();
+    public Transform pathParent;
+    public List<Vector3> positions = new List<Vector3>();
 
-    private void Awake()
+    private void OnEnable()
     {
-        for (int i = 0; i < pathParent.childCount; i++)
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Сбрасываем список точек
+        positions.Clear();
+
+        // Пытаемся найти новый PathParent по тегу
+        if (pathParent == null)
         {
-            Vector3 childPosition = pathParent.GetChild(i).position;
-            positions.Add(childPosition);
+            GameObject commonPoint = GameObject.FindGameObjectWithTag("Points");
+            if (commonPoint != null)
+                pathParent = commonPoint.transform;
+        }
+
+        // Если нашли, заполняем positions
+        if (pathParent != null)
+        {
+            for (int i = 0; i < pathParent.childCount; i++)
+                positions.Add(pathParent.GetChild(i).position);
+        }
+        else
+        {
+            Debug.LogWarning("PathParent не найден!");
         }
     }
 

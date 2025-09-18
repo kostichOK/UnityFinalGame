@@ -22,6 +22,13 @@ public class ButtonsManager : MonoBehaviour
     public Transform spawnPoint; // точка спавна игрока в новой сцене
     private NavMeshAgent agent;
     public PlayerMovement playerSpeed;
+    public EnemyAI enemyAI;
+    public HoldItem holdItem;
+    public PointsManager pointsManager;
+    public GameObject cursorSee;
+    public static float rayLarge = 0.8f;
+    public float dropForce = 3;
+    int currentScene = 0;
 
     private void Start()
     {
@@ -57,8 +64,11 @@ public class ButtonsManager : MonoBehaviour
         }
     }
 
+    [System.Obsolete]
     public void ToIndustry()
     {
+        if (currentScene == 1) return;
+        currentScene = 1;
         buttonSO.mapActive = false;
         if (mapBigImage) mapBigImage.SetActive(false);
         mapIsActive = false;
@@ -83,15 +93,23 @@ public class ButtonsManager : MonoBehaviour
         agent.speed = 2;
         playerSpeed.walkSpeedRef = 3;
         playerSpeed.walkSpeed = 3;
-        Debug.Log(playerSpeed.walkSpeed);
+        playerSpeed.lookSpeed = 2f;
+
+        enemyAI.visionRange = 26;
+        rayLarge = 3f;
+        dropForce = 5;
 
         // Подписываемся на событие загрузки новой сцены
         SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.LoadScene(1);
     }
 
+    [System.Obsolete]
     public void ToSementery()
     {
+        if (currentScene == 2) return;
+        currentScene = 2;
+
         if (mapBigImage) mapBigImage.SetActive(false);
         mapIsActive = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -100,6 +118,7 @@ public class ButtonsManager : MonoBehaviour
         agent.speed = 1;
         playerSpeed.walkSpeedRef = 1.5f;
         playerSpeed.walkSpeed = 1.5f;
+        playerSpeed.lookSpeed = 2f;
 
         if (flashlight)
         {
@@ -113,21 +132,50 @@ public class ButtonsManager : MonoBehaviour
             dof.focalLength.value = 46;
         }
 
+        enemyAI.visionRange = 13;
+        rayLarge = 0.8f;
+        dropForce = 3;
+
 
         SceneManager.LoadScene(0);
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
+    [System.Obsolete]
     public void ToShed()
     {
+        if (currentScene == 3) return;
+        currentScene = 3;
+
+        cursorSee.SetActive(true);
         if (mapBigImage) mapBigImage.SetActive(false);
         mapIsActive = false;
         Cursor.lockState = CursorLockMode.Locked;
         mapSmallImage.SetActive(false);
+
+        GameObject enemy = GameObject.FindWithTag("Enemy");
+        agent = enemy.GetComponent<NavMeshAgent>();
+
+        agent.speed = 3;
+        playerSpeed.walkSpeedRef = 5f;
+        playerSpeed.walkSpeed = 5f;
+        playerSpeed.lookSpeed = 3f;
+
+        if (flashlight)
+        {
+            flashlight.intensity = 2f;
+            flashlight.range = 30f;
+        }
+
+        enemyAI.visionRange = 30;
+        rayLarge = 8f;
+        dropForce = 10;
+
         SceneManager.LoadScene(2);
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
+    [System.Obsolete]
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         // Игрок
