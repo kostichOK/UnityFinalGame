@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 
 public class ItemInspection : MonoBehaviour
@@ -11,9 +9,9 @@ public class ItemInspection : MonoBehaviour
     public float rotateSpeed = 200f;
     public Camera playerCam;
     public LayerMask interactLayer;
-    public GameObject postProcessVolume; 
-    public MonoBehaviour playerMovement; 
-    public MonoBehaviour playerLook;     
+    public GameObject postProcessVolume;
+    public MonoBehaviour playerMovement;
+    public MonoBehaviour playerLook;
 
     private Transform currentItem;
     public GameObject currentItems;
@@ -27,73 +25,102 @@ public class ItemInspection : MonoBehaviour
     public HoldItem holdItem;
     public bool handOcuped = false;
 
-    
+    public Item item;
+    public ButtonsManager buttonsManager;
+
+    [Obsolete]
     void Update()
     {
         if (!inspecting)
         {
-            Ray ray = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-            cursorNormal.SetActive(true);
-            cursorSee.SetActive(false);
-
-            if (Physics.Raycast(ray, out RaycastHit hit, 3f, interactLayer))
-            {
-                cursorNormal.SetActive(false);
-                cursorSee.SetActive(true);
-
-                if (Input.GetKeyDown(KeyCode.E))
-                {    
-                    if (hit.transform != null)
-                    {
-                        Debug.Log(hit.transform);
-                        StartCoroutine(StartInspect(hit.transform));
-                    } 
-                }
-            }
+            HandleRaycast();
         }
         else
         {
-            // Вращение предмета мышкой
-            if (currentItem != null)
-            {
-                float rotX = -Input.GetAxis("Mouse X") * rotateSpeed * Time.unscaledDeltaTime;
-                float rotY = Input.GetAxis("Mouse Y") * rotateSpeed * Time.unscaledDeltaTime;
-                currentItem.Rotate(playerCam.transform.up, rotX, Space.World);
-                currentItem.Rotate(playerCam.transform.right, rotY, Space.World);
-            }
+            RotateItem();
+            CheckEndInspect();
+            CheckPickup();
+        }
+    }
 
-            if (Input.GetKeyDown(KeyCode.Mouse1))
-            {
-                StartCoroutine(EndInspect());
-            }
+    [Obsolete]
+    private void HandleRaycast()
+    {
+        Ray ray = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        cursorNormal.SetActive(true);
+        cursorSee.SetActive(false);
 
-            // Поднять предмет
-            if (Input.GetKeyDown(KeyCode.E) && itemReady)
+        if (Physics.Raycast(ray, out RaycastHit hit, ButtonsManager.rayLarge, interactLayer))
+        {
+            cursorNormal.SetActive(false);
+            cursorSee.SetActive(true);
+
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                if (handOcuped) { return; }
-                if (currentItems != null)
+                if (hit.transform != null)
                 {
-                    holdItem.Hold(currentItems); // здесь точно не будет null
-                    handOcuped = true;
+                    StartCoroutine(StartInspect(hit.transform));
                 }
-
-                ResetInspection();
             }
         }
     }
 
-    public System.Collections.IEnumerator StartInspect(Transform item)
+    private void RotateItem()
     {
-        currentItems = item.gameObject;
+        if (currentItem != null)
+        {
+            float rotX = -Input.GetAxis("Mouse X") * rotateSpeed * Time.unscaledDeltaTime;
+            float rotY = Input.GetAxis("Mouse Y") * rotateSpeed * Time.unscaledDeltaTime;
+
+            currentItem.Rotate(playerCam.transform.up, rotX, Space.World);
+            currentItem.Rotate(playerCam.transform.right, rotY, Space.World);
+        }
+    }
+
+    [Obsolete]
+    private void CheckEndInspect()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            StartCoroutine(EndInspect());
+        }
+    }
+
+    [Obsolete]
+    private void CheckPickup()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && itemReady && !handOcuped)
+        {
+            if (currentItems != null)
+            {
+                var itemComponent = currentItem.GetComponent<Item>();
+                holdItem.Hold(currentItems);
+                handOcuped = true;
+                itemComponent.PickUp();
+            }
+
+            ResetInspection();
+        }
+    }
+
+    [Obsolete]
+    public IEnumerator StartInspect(Transform itemTransform)
+    {
+        currentItems = itemTransform.gameObject;
         cursorSee.SetActive(false);
         inspecting = true;
 
-        currentItem = item;
-        originalPos = item.position;
-        originalRot = item.rotation;
+        currentItem = itemTransform;
+        originalPos = itemTransform.position;
+        originalRot = itemTransform.rotation;
 
-        if (item.TryGetComponent<Rigidbody>(out Rigidbody rb))
+        if (itemTransform.TryGetComponent<Rigidbody>(out Rigidbody rb))
+        {
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
             rb.useGravity = false;
+            rb.isKinematic = true;
+        }
 
         Time.timeScale = 0f;
         postProcessVolume.SetActive(true);
@@ -101,9 +128,7 @@ public class ItemInspection : MonoBehaviour
         playerMovement.enabled = false;
         playerLook.enabled = false;
 
-        // Плавная анимация
-        float t = 0;
-        
+        float t = 0f;
         while (t < 1f)
         {
             t += Time.unscaledDeltaTime * moveSpeed;
@@ -112,19 +137,17 @@ public class ItemInspection : MonoBehaviour
             yield return null;
         }
 
-
         itemReady = true;
     }
 
-    public System.Collections.IEnumerator EndInspect()
+    [Obsolete]
+    public IEnumerator EndInspect()
     {
         itemReady = false;
-        
-        float t = 0;
+
+        float t = 0f;
         Vector3 startPos = currentItem.position;
         Quaternion startRot = currentItem.rotation;
-
-        // Плавная анимация
         while (t < 1f)
         {
             t += Time.unscaledDeltaTime * moveSpeed;
@@ -134,7 +157,12 @@ public class ItemInspection : MonoBehaviour
         }
 
         if (currentItem.TryGetComponent<Rigidbody>(out Rigidbody rb))
+        {
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.useGravity = true;
             rb.isKinematic = false;
+        }
 
         Time.timeScale = 1f;
         postProcessVolume.SetActive(false);
@@ -144,6 +172,7 @@ public class ItemInspection : MonoBehaviour
 
         inspecting = false;
         currentItem = null;
+        currentItems = null;
     }
 
     public void ResetInspection()
@@ -157,5 +186,6 @@ public class ItemInspection : MonoBehaviour
         inspecting = false;
         currentItem = null;
         currentItems = null;
+        handOcuped = false;
     }
 }

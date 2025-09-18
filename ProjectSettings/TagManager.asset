@@ -7,6 +7,9 @@ TagManager:
   - Points
   - Enemy
   - EnemySpawn
+  - points
+  - CN
+  - CS
   layers:
   - Default
   - TransparentFX

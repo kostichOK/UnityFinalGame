@@ -24,6 +24,7 @@ public class EnemyAI : MonoBehaviour
 
         if (pointsManager != null && pointsManager.positionsCount() > 0)
         {
+            Debug.Log("aaaaa");
             transform.position = pointsManager.GetPosition(0);
             agent.SetDestination(pointsManager.GetPosition(0));
         }
