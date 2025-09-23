@@ -57,8 +57,9 @@ public class ItemInspection : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                if (hit.transform != null)
+                if (hit.transform != null && handOcuped == false)
                 {
+                    Debug.Log(handOcuped);
                     StartCoroutine(StartInspect(hit.transform));
                 }
             }
@@ -89,13 +90,14 @@ public class ItemInspection : MonoBehaviour
     [Obsolete]
     private void CheckPickup()
     {
-        if (Input.GetKeyDown(KeyCode.E) && itemReady && !handOcuped)
+        if (Input.GetKeyDown(KeyCode.E) && itemReady && handOcuped == false)
         {
             if (currentItems != null)
             {
                 var itemComponent = currentItem.GetComponent<Item>();
                 holdItem.Hold(currentItems);
                 handOcuped = true;
+                Debug.Log(handOcuped);
                 itemComponent.PickUp();
             }
 
@@ -186,6 +188,11 @@ public class ItemInspection : MonoBehaviour
         inspecting = false;
         currentItem = null;
         currentItems = null;
-        handOcuped = false;
+
+        // handOcuped сбрасываем только если предмет не был поднят
+        if (!holdItem.HasItem())
+        {
+            handOcuped = false;
+        }
     }
 }

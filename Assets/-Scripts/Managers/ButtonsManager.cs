@@ -25,10 +25,10 @@ public class ButtonsManager : MonoBehaviour
     public EnemyAI enemyAI;
     public HoldItem holdItem;
     public PointsManager pointsManager;
-    public GameObject cursorSee;
+    public PlayerUse playerUse;
     public static float rayLarge = 0.8f;
     public float dropForce = 3;
-    int currentScene = 0;
+    int currentScene = 2;
 
     private void Start()
     {
@@ -147,7 +147,6 @@ public class ButtonsManager : MonoBehaviour
         if (currentScene == 3) return;
         currentScene = 3;
 
-        cursorSee.SetActive(true);
         if (mapBigImage) mapBigImage.SetActive(false);
         mapIsActive = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -160,11 +159,18 @@ public class ButtonsManager : MonoBehaviour
         playerSpeed.walkSpeedRef = 5f;
         playerSpeed.walkSpeed = 5f;
         playerSpeed.lookSpeed = 3f;
+        playerUse.distance = 5.5f;
 
         if (flashlight)
         {
             flashlight.intensity = 2f;
             flashlight.range = 30f;
+        }
+        if (dof != null)
+        {
+            dof.focusDistance.value = 0.75f;
+            dof.aperture.value = 19.8f;
+            dof.focalLength.value = 46;
         }
 
         enemyAI.visionRange = 30;

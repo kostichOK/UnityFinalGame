@@ -1,95 +1,104 @@
-﻿using UnityEngine.SceneManagement;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Item : MonoBehaviour
 {
-    public string objectID;
+    public string objectID; // уникальный идентификатор
     private Rigidbody rb;
-    private bool isDropped = false;
-    private bool isHeld = false; // предмет у игрока?
 
-    private static readonly System.Collections.Generic.Dictionary<string, Vector3> savedPositions =
-        new System.Collections.Generic.Dictionary<string, Vector3>();
-    private static readonly System.Collections.Generic.HashSet<string> pickedUpItems =
-        new System.Collections.Generic.HashSet<string>();
+    private bool isHeld = false;
+    private bool isDropped = false;
+
+    // Словари для сохранения данных между сценами
+    private static Dictionary<string, Vector3> itemPositions = new Dictionary<string, Vector3>();
+    private static HashSet<string> heldItems = new HashSet<string>();
+    private static HashSet<string> spawnedItems = new HashSet<string>(); // чтобы не создавать дубликаты
+
+    private Vector3 startPos; // стартовая позиция в сцене
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        startPos = transform.position;
+
+        // если уже есть сохранённая позиция (значит ключ существовал), то
+        // текущий (сценовый) экземпляр — лишний
+        if (itemPositions.ContainsKey(objectID) || heldItems.Contains(objectID))
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        if (!spawnedItems.Contains(objectID))
+        {
+            spawnedItems.Add(objectID);
+        }
     }
 
-    [System.Obsolete]
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    [System.Obsolete]
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    [System.Obsolete]
     private void Start()
     {
         ApplySavedState();
     }
 
-    [System.Obsolete]
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         ApplySavedState();
     }
 
-    [System.Obsolete]
     private void ApplySavedState()
     {
-        // Ставим на сохранённую позицию только если предмет не в руках
-        if (!isHeld && savedPositions.ContainsKey(objectID))
+        // Если ключ в руках игрока, оставляем его там
+        if (heldItems.Contains(objectID))
         {
-            // Если предмет был подобран и находится в руках — отключаем его в сцене
-            if (pickedUpItems.Contains(objectID))
+            isHeld = true;
+        }
+        else
+        {
+            isHeld = false;
+
+            // Если ключ был перемещён, ставим его на новую позицию
+            if (itemPositions.TryGetValue(objectID, out Vector3 savedPos))
             {
-                gameObject.SetActive(false);
-                return;
+                transform.position = savedPos;
+            }
+            else
+            {
+                // Если ключ не тронут — стартовая позиция
+                transform.position = startPos;
             }
 
-            // Если предмет был оставлен на полу (есть сохранённая позиция)
-            if (savedPositions.ContainsKey(objectID))
+            // Настройка физики для нормального падения
+            if (rb != null)
             {
-                transform.position = savedPositions[objectID]; // Если убрать будет лежать на полу но не удалится из сцены
-                if (rb != null)
-                {
-                    rb.velocity = Vector3.zero;
-                    rb.angularVelocity = Vector3.zero;
-                    rb.useGravity = false;
-                    rb.isKinematic = true;
-                }
-
-
+                rb.velocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+                rb.useGravity = true;
+                rb.isKinematic = false;
             }
         }
+
+        if (!heldItems.Contains(objectID))
+            gameObject.SetActive(true);
     }
 
-    [System.Obsolete]
-    private void Update()
-    {
-        if (isDropped && rb != null)
-        {
-            if (rb.velocity.magnitude < 0.05f && rb.angularVelocity.magnitude < 0.05f)
-            {
-                savedPositions[objectID] = transform.position;
-                isDropped = false;
-            }
-        }
-    }
-
-    [System.Obsolete]
     public void PickUp()
     {
-        pickedUpItems.Add(objectID);
-        isHeld = true; // теперь предмет у игрока
+        if (isHeld) return;
+
+        isHeld = true;
+        heldItems.Add(objectID);
+
         if (rb != null)
         {
             rb.velocity = Vector3.zero;
@@ -99,20 +108,31 @@ public class Item : MonoBehaviour
         }
     }
 
-    [System.Obsolete]
-    public void Drop(Vector3 newPos)
+    public void Drop(Vector3 newPosition)
     {
-        isHeld = false; // предмет больше не в руках
-        transform.position = newPos;
-        pickedUpItems.Remove(objectID);
-        isDropped = true;
+        if (!isHeld) return;
+
+        isHeld = false;
+        heldItems.Remove(objectID);
+
+        transform.position = newPosition;
+        itemPositions[objectID] = newPosition;
 
         if (rb != null)
         {
-            rb.velocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
             rb.useGravity = true;
             rb.isKinematic = false;
+        }
+
+        gameObject.SetActive(true); // ключ всегда видим
+    }
+
+    private void Update()
+    {
+        // Фиксируем позицию, если ключ лежит на полу и остановился
+        if (!isHeld && rb != null && rb.velocity.magnitude < 0.05f && rb.angularVelocity.magnitude < 0.05f)
+        {
+            itemPositions[objectID] = transform.position;
         }
     }
 }

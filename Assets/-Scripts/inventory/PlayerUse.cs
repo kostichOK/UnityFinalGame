@@ -3,9 +3,9 @@
 public class PlayerUse : MonoBehaviour
 {
     [SerializeField] private Camera cam;
-    [SerializeField] private float distance = 3f;
     [SerializeField] private LayerMask interactMask;
     [SerializeField] private HoldItem holdItem; // наш скрипт для предметов в руках
+    public float distance = 3f;
     public ItemInspection inspection;
 
     public GameObject cursorNormal;

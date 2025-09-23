@@ -126,4 +126,9 @@ public class HoldItem : MonoBehaviour
     {
         return currentItem;
     }
+
+    public bool HasItem()
+    {
+        return currentItem != null;
+    }
 }

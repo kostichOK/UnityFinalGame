@@ -41,7 +41,6 @@ public class Door : MonoBehaviour
 
     public void Open()
     {
-        Debug.Log("a");
         isOpen = true;
         animator.SetBool("isOpen", true);
     }
@@ -50,17 +49,12 @@ public class Door : MonoBehaviour
     {
         isOpen = false;
         animator.SetBool("isOpen", false);
-        Debug.Log("b");
     }
 
     private void ComprobarDoor()
     {
 
         Ray ray = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-
-        cursorNormal.SetActive(true);
-        cursorSee.SetActive(false);
-
         if (Physics.Raycast(ray, out RaycastHit hit, ButtonsManager.rayLarge, interactLayer))
         {
             cursorNormal.SetActive(false);
