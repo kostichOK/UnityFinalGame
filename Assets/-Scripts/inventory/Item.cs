@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,24 +22,12 @@ public class Item : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         startPos = transform.position;
-
-        // если уже есть сохранённая позиция (значит ключ существовал), то
-        // текущий (сценовый) экземпляр — лишний
-        if (itemPositions.ContainsKey(objectID) || heldItems.Contains(objectID))
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        if (!spawnedItems.Contains(objectID))
-        {
-            spawnedItems.Add(objectID);
-        }
     }
 
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
+        StartCoroutine(EnablePhysicsAfterSpawn());
     }
 
     private void OnDisable()
@@ -46,14 +35,37 @@ public class Item : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    private void Start()
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        // Ставим позицию
         ApplySavedState();
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    public IEnumerator EnablePhysicsAfterSpawn()
     {
-        ApplySavedState();
+        // Срабатывает только для ключей
+        if (rb == null) yield break;
+
+        // Ждём немного, чтобы Terrain и коллайдеры прогрузились
+        yield return new WaitForSeconds(0.1f);
+
+        if (!isHeld) // если предмет не в руках
+        {
+            rb.isKinematic = false;
+            rb.useGravity = true;
+        }
+    }
+
+    private void Start()
+    {
+        // Если объект ещё не в руках, делаем его кинематиком на момент спавна
+        if (!isHeld && rb != null)
+        {
+            rb.isKinematic = true;
+            rb.useGravity = false;
+        }
+
+        ApplySavedState(); // восстановление позиции
     }
 
     private void ApplySavedState()
@@ -134,5 +146,10 @@ public class Item : MonoBehaviour
         {
             itemPositions[objectID] = transform.position;
         }
+    }
+
+    public static bool HasPosition(string objectID, out Vector3 pos)
+    {
+        return itemPositions.TryGetValue(objectID, out pos);
     }
 }

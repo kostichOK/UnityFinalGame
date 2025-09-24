@@ -9,6 +9,7 @@ public class ItemInspection : MonoBehaviour
     public float rotateSpeed = 200f;
     public Camera playerCam;
     public LayerMask interactLayer;
+    public LayerMask interactLayer2;
     public GameObject postProcessVolume;
     public MonoBehaviour playerMovement;
     public MonoBehaviour playerLook;
@@ -55,14 +56,17 @@ public class ItemInspection : MonoBehaviour
             cursorNormal.SetActive(false);
             cursorSee.SetActive(true);
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Physics.Raycast(ray, out RaycastHit hit2, ButtonsManager.rayLarge, interactLayer2))
             {
-                if (hit.transform != null && handOcuped == false)
+                if (Input.GetKeyDown(KeyCode.E))
                 {
-                    Debug.Log(handOcuped);
-                    StartCoroutine(StartInspect(hit.transform));
+                    if (hit.transform != null && handOcuped == false)
+                    {
+                        StartCoroutine(StartInspect(hit.transform));
+                    }
                 }
             }
+            
         }
     }
 

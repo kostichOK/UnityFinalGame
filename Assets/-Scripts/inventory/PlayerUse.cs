@@ -37,6 +37,7 @@ public class PlayerUse : MonoBehaviour
                         inspection.handOcuped = false;
                         cursorNormal.SetActive(true);
                         cursorSee.SetActive(false);
+                        hit.collider.GetComponent<Chest>().Interact();
                     }
                 }
             }
