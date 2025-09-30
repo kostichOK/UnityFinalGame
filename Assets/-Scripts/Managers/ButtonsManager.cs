@@ -23,12 +23,13 @@ public class ButtonsManager : MonoBehaviour
     private NavMeshAgent agent;
     public PlayerMovement playerSpeed;
     public EnemyAI enemyAI;
+    public EnemyCatch enemyCatch;
     public HoldItem holdItem;
     public PointsManager pointsManager;
     public PlayerUse playerUse;
     public static float rayLarge = 0.8f;
     public float dropForce = 3;
-    int currentScene = 2;
+    int currentScene = 3;
 
     private void Start()
     {
@@ -42,6 +43,7 @@ public class ButtonsManager : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(currentScene);
         // Управление картой
         if (buttonSO.mapActive && Input.GetKeyDown(KeyCode.Q))
         {
@@ -73,6 +75,8 @@ public class ButtonsManager : MonoBehaviour
         if (mapBigImage) mapBigImage.SetActive(false);
         mapIsActive = false;
         Cursor.lockState = CursorLockMode.Locked;
+
+        enemyCatch.captureDistance = 1;
 
         // Настраиваем фонарик и пост-процесс
         if (flashlight)
@@ -115,6 +119,7 @@ public class ButtonsManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         mapSmallImage.SetActive(false);
 
+        enemyCatch.captureDistance = 0.5f;
         agent.speed = 1;
         playerSpeed.walkSpeedRef = 1.5f;
         playerSpeed.walkSpeed = 1.5f;
@@ -151,10 +156,12 @@ public class ButtonsManager : MonoBehaviour
         mapIsActive = false;
         Cursor.lockState = CursorLockMode.Locked;
         mapSmallImage.SetActive(false);
+        enemyCatch.captureDistance = 1.5f;
 
         GameObject enemy = GameObject.FindWithTag("Enemy");
         agent = enemy.GetComponent<NavMeshAgent>();
 
+        
         agent.speed = 3;
         playerSpeed.walkSpeedRef = 5f;
         playerSpeed.walkSpeed = 5f;

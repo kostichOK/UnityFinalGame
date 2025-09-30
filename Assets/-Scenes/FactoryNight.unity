@@ -25,14 +25,14 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.094, g: 0.086, b: 0.07, a: 2}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
-  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 2a091566fd384d94fa99033412141e17, type: 2}
+  m_SubtractiveShadowColor: {r: 0, g: 0, b: 0, a: 1}
+  m_SkyboxMaterial: {fileID: 15302, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
-  m_DefaultReflectionMode: 0
+  m_DefaultReflectionMode: 1
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
@@ -457,6 +457,10 @@ PrefabInstance:
     - target: {fileID: 1521169486626968, guid: c5c41937c51018d4a9f4837ad25b5685, type: 3}
       propertyPath: m_Name
       value: Factory1Stairs01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521169486626968, guid: c5c41937c51018d4a9f4837ad25b5685, type: 3}
+      propertyPath: m_TagString
+      value: Metal
       objectReference: {fileID: 0}
     - target: {fileID: 4732136700331324, guid: c5c41937c51018d4a9f4837ad25b5685, type: 3}
       propertyPath: m_RootOrder
@@ -1630,7 +1634,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &110501288
 Light:
   m_ObjectHideFlags: 0
@@ -3691,6 +3695,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Factory2Floor01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1880573944120230, guid: 8d7783033df995f4f87d7cd4b44ddc3d, type: 3}
+      propertyPath: m_TagString
+      value: Stone
+      objectReference: {fileID: 0}
     - target: {fileID: 4170048859081958, guid: 8d7783033df995f4f87d7cd4b44ddc3d, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -4584,6 +4592,10 @@ PrefabInstance:
     - target: {fileID: 1532556961297136, guid: 30efe2829927a3644b46e2e1b291dbed, type: 3}
       propertyPath: m_Name
       value: Factory1Stairs05 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532556961297136, guid: 30efe2829927a3644b46e2e1b291dbed, type: 3}
+      propertyPath: m_TagString
+      value: Metal
       objectReference: {fileID: 0}
     - target: {fileID: 4645516805591864, guid: 30efe2829927a3644b46e2e1b291dbed, type: 3}
       propertyPath: m_RootOrder
@@ -5560,6 +5572,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 122453079}
     m_Modifications:
+    - target: {fileID: 1139861789165088, guid: 64e306e2db357174b943bc6313b84021, type: 3}
+      propertyPath: m_TagString
+      value: Stone
+      objectReference: {fileID: 0}
     - target: {fileID: 4902307462026462, guid: 64e306e2db357174b943bc6313b84021, type: 3}
       propertyPath: m_RootOrder
       value: 22
@@ -5794,6 +5810,10 @@ PrefabInstance:
     - target: {fileID: 1521169486626968, guid: c5c41937c51018d4a9f4837ad25b5685, type: 3}
       propertyPath: m_Name
       value: Factory1Stairs01 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521169486626968, guid: c5c41937c51018d4a9f4837ad25b5685, type: 3}
+      propertyPath: m_TagString
+      value: Metal
       objectReference: {fileID: 0}
     - target: {fileID: 4732136700331324, guid: c5c41937c51018d4a9f4837ad25b5685, type: 3}
       propertyPath: m_RootOrder
@@ -6110,7 +6130,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &406214456
 Light:
   m_ObjectHideFlags: 0
@@ -6628,6 +6648,10 @@ PrefabInstance:
     - target: {fileID: 1521169486626968, guid: c5c41937c51018d4a9f4837ad25b5685, type: 3}
       propertyPath: m_Name
       value: Factory1Stairs01 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521169486626968, guid: c5c41937c51018d4a9f4837ad25b5685, type: 3}
+      propertyPath: m_TagString
+      value: Metal
       objectReference: {fileID: 0}
     - target: {fileID: 4732136700331324, guid: c5c41937c51018d4a9f4837ad25b5685, type: 3}
       propertyPath: m_RootOrder
@@ -8556,6 +8580,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gold Chest 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6650453368175309425, guid: 31e9a271e89f3184eb9e6afcab01275b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8555829129220238815, guid: 31e9a271e89f3184eb9e6afcab01275b, type: 3}
       propertyPath: objectID
       value: chest_2
@@ -8591,6 +8619,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectID: chest_2
   isOpen: 0
+  audioSource: {fileID: 1394967062}
 --- !u!1001 &615169897
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8668,6 +8697,10 @@ PrefabInstance:
     - target: {fileID: 1455528290607510, guid: ae2a2dbf7bf070845b038a33226b02a8, type: 3}
       propertyPath: m_Name
       value: Factory1Stairs06 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455528290607510, guid: ae2a2dbf7bf070845b038a33226b02a8, type: 3}
+      propertyPath: m_TagString
+      value: Metal
       objectReference: {fileID: 0}
     - target: {fileID: 4967516495850316, guid: ae2a2dbf7bf070845b038a33226b02a8, type: 3}
       propertyPath: m_RootOrder
@@ -8854,6 +8887,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 122453079}
     m_Modifications:
+    - target: {fileID: 1532556961297136, guid: 30efe2829927a3644b46e2e1b291dbed, type: 3}
+      propertyPath: m_TagString
+      value: Metal
+      objectReference: {fileID: 0}
     - target: {fileID: 4645516805591864, guid: 30efe2829927a3644b46e2e1b291dbed, type: 3}
       propertyPath: m_RootOrder
       value: 41
@@ -9486,7 +9523,8 @@ PrefabInstance:
       value: 3.5527137e-15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1331313662873344, guid: 04233d19d5893ef47b80d081a6822bdd, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04233d19d5893ef47b80d081a6822bdd, type: 3}
@@ -9982,6 +10020,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 122453079}
     m_Modifications:
+    - target: {fileID: 1521169486626968, guid: c5c41937c51018d4a9f4837ad25b5685, type: 3}
+      propertyPath: m_TagString
+      value: Metal
+      objectReference: {fileID: 0}
     - target: {fileID: 4732136700331324, guid: c5c41937c51018d4a9f4837ad25b5685, type: 3}
       propertyPath: m_RootOrder
       value: 36
@@ -10032,6 +10074,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 122453079}
     m_Modifications:
+    - target: {fileID: 1810843828704976, guid: 6a5bede2b731a0044949586a597664dd, type: 3}
+      propertyPath: m_TagString
+      value: Metal
+      objectReference: {fileID: 0}
     - target: {fileID: 4708759706121472, guid: 6a5bede2b731a0044949586a597664dd, type: 3}
       propertyPath: m_RootOrder
       value: 60
@@ -10284,6 +10330,10 @@ PrefabInstance:
     - target: {fileID: 1487541380901968, guid: 00b4ec2f0cab3cb428a5c9200344fe9c, type: 3}
       propertyPath: m_Name
       value: Factory1Stairs02 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487541380901968, guid: 00b4ec2f0cab3cb428a5c9200344fe9c, type: 3}
+      propertyPath: m_TagString
+      value: Metal
       objectReference: {fileID: 0}
     - target: {fileID: 4649622374665120, guid: 00b4ec2f0cab3cb428a5c9200344fe9c, type: 3}
       propertyPath: m_RootOrder
@@ -10733,6 +10783,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 122453079}
     m_Modifications:
+    - target: {fileID: 1298158610659638, guid: 4013db2700171ec4f869921a19f36546, type: 3}
+      propertyPath: m_TagString
+      value: Stone
+      objectReference: {fileID: 0}
     - target: {fileID: 4905551904120068, guid: 4013db2700171ec4f869921a19f36546, type: 3}
       propertyPath: m_RootOrder
       value: 32
@@ -10890,6 +10944,10 @@ PrefabInstance:
     - target: {fileID: 1521169486626968, guid: c5c41937c51018d4a9f4837ad25b5685, type: 3}
       propertyPath: m_Name
       value: Factory1Stairs01 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521169486626968, guid: c5c41937c51018d4a9f4837ad25b5685, type: 3}
+      propertyPath: m_TagString
+      value: Metal
       objectReference: {fileID: 0}
     - target: {fileID: 4732136700331324, guid: c5c41937c51018d4a9f4837ad25b5685, type: 3}
       propertyPath: m_RootOrder
@@ -12953,6 +13011,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 122453079}
     m_Modifications:
+    - target: {fileID: 1487541380901968, guid: 00b4ec2f0cab3cb428a5c9200344fe9c, type: 3}
+      propertyPath: m_TagString
+      value: Metal
+      objectReference: {fileID: 0}
     - target: {fileID: 4649622374665120, guid: 00b4ec2f0cab3cb428a5c9200344fe9c, type: 3}
       propertyPath: m_RootOrder
       value: 35
@@ -13056,6 +13118,10 @@ PrefabInstance:
     - target: {fileID: 1487541380901968, guid: 00b4ec2f0cab3cb428a5c9200344fe9c, type: 3}
       propertyPath: m_Name
       value: Factory1Stairs02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487541380901968, guid: 00b4ec2f0cab3cb428a5c9200344fe9c, type: 3}
+      propertyPath: m_TagString
+      value: Metal
       objectReference: {fileID: 0}
     - target: {fileID: 4649622374665120, guid: 00b4ec2f0cab3cb428a5c9200344fe9c, type: 3}
       propertyPath: m_RootOrder
@@ -15139,6 +15205,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 122453079}
     m_Modifications:
+    - target: {fileID: 1139861789165088, guid: 64e306e2db357174b943bc6313b84021, type: 3}
+      propertyPath: m_TagString
+      value: Stone
+      objectReference: {fileID: 0}
     - target: {fileID: 4902307462026462, guid: 64e306e2db357174b943bc6313b84021, type: 3}
       propertyPath: m_RootOrder
       value: 28
@@ -15192,6 +15262,10 @@ PrefabInstance:
     - target: {fileID: 1487541380901968, guid: 00b4ec2f0cab3cb428a5c9200344fe9c, type: 3}
       propertyPath: m_Name
       value: Factory1Stairs02 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487541380901968, guid: 00b4ec2f0cab3cb428a5c9200344fe9c, type: 3}
+      propertyPath: m_TagString
+      value: Metal
       objectReference: {fileID: 0}
     - target: {fileID: 4649622374665120, guid: 00b4ec2f0cab3cb428a5c9200344fe9c, type: 3}
       propertyPath: m_RootOrder
@@ -15563,7 +15637,8 @@ PrefabInstance:
       value: 3.5527137e-15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1331313662873344, guid: 04233d19d5893ef47b80d081a6822bdd, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04233d19d5893ef47b80d081a6822bdd, type: 3}
@@ -16798,6 +16873,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 122453079}
     m_Modifications:
+    - target: {fileID: 1789410238604880, guid: 180fb3373abc17a40851180a5796d9e6, type: 3}
+      propertyPath: m_TagString
+      value: Metal
+      objectReference: {fileID: 0}
     - target: {fileID: 4581440648453384, guid: 180fb3373abc17a40851180a5796d9e6, type: 3}
       propertyPath: m_RootOrder
       value: 42
@@ -17408,6 +17487,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: 009b9f48a477a2a4ab577cb2c1cf61fe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1251072796}
+    - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: 009b9f48a477a2a4ab577cb2c1cf61fe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1251072797}
   m_SourcePrefab: {fileID: 100100000, guid: 009b9f48a477a2a4ab577cb2c1cf61fe, type: 3}
 --- !u!1 &1251072795 stripped
 GameObject:
@@ -17435,6 +17517,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 22.492254, y: 32.49345, z: 7.555839}
   m_Center: {x: 0.033055436, y: -0.8529988, z: 2.5894291}
+--- !u!114 &1251072797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251072795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2d6fde8e509afb409810e18f9fc8a73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1254672372
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17674,6 +17768,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Factory1Stairs07 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1899671981156196, guid: f408bb1102049ad4abaee7b30fd52c5a, type: 3}
+      propertyPath: m_TagString
+      value: Metal
+      objectReference: {fileID: 0}
     - target: {fileID: 4062201381635182, guid: f408bb1102049ad4abaee7b30fd52c5a, type: 3}
       propertyPath: m_RootOrder
       value: 63
@@ -17895,7 +17993,7 @@ MonoBehaviour:
   itemsToSpawn:
   - objectID: green_key
     prefab: {fileID: 2140545929560118650, guid: a4fbbedfe3657904ca25d0e06f2f374c, type: 3}
-    defaultPos: {x: -14.441, y: 1, z: -30.201}
+    defaultPos: {x: -20.134, y: 1, z: -2.061}
 --- !u!4 &1322683972
 Transform:
   m_ObjectHideFlags: 0
@@ -18031,6 +18129,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Factory1Stairs06 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1455528290607510, guid: ae2a2dbf7bf070845b038a33226b02a8, type: 3}
+      propertyPath: m_TagString
+      value: Metal
+      objectReference: {fileID: 0}
     - target: {fileID: 4967516495850316, guid: ae2a2dbf7bf070845b038a33226b02a8, type: 3}
       propertyPath: m_RootOrder
       value: 40
@@ -18092,6 +18194,10 @@ PrefabInstance:
     - target: {fileID: 1521169486626968, guid: c5c41937c51018d4a9f4837ad25b5685, type: 3}
       propertyPath: m_Name
       value: Factory1Stairs01 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521169486626968, guid: c5c41937c51018d4a9f4837ad25b5685, type: 3}
+      propertyPath: m_TagString
+      value: Metal
       objectReference: {fileID: 0}
     - target: {fileID: 4732136700331324, guid: c5c41937c51018d4a9f4837ad25b5685, type: 3}
       propertyPath: m_RootOrder
@@ -18916,6 +19022,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 122453079}
     m_Modifications:
+    - target: {fileID: 1298158610659638, guid: 4013db2700171ec4f869921a19f36546, type: 3}
+      propertyPath: m_TagString
+      value: Stone
+      objectReference: {fileID: 0}
     - target: {fileID: 4905551904120068, guid: 4013db2700171ec4f869921a19f36546, type: 3}
       propertyPath: m_RootOrder
       value: 27
@@ -19044,6 +19154,135 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 496200, guid: 08fbf63192859a8478ea10767d582048, type: 3}
   m_PrefabInstance: {fileID: 1388624822}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1394967061
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1394967063}
+  - component: {fileID: 1394967062}
+  m_Layer: 0
+  m_Name: ChestAudio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1394967062
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394967061}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 5ff0dc96863ccdb45904ef59590c2318, type: 2}
+  m_audioClip: {fileID: 8300000, guid: daa53a25cf6fcc845aef5d8842ba6155, type: 3}
+  m_Resource: {fileID: 8300000, guid: daa53a25cf6fcc845aef5d8842ba6155, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1394967063
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394967061}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.631505, y: -5.9418097, z: 34.078262}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1401969138
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19058,7 +19297,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 140538, guid: 93b7d0ada2e6c2849be407103254d1fe, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 499098, guid: 93b7d0ada2e6c2849be407103254d1fe, type: 3}
       propertyPath: m_RootOrder
@@ -19124,6 +19363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requiredKeyName: prf_v_key_03
   animator: {fileID: 0}
+  artifactsInside: []
 --- !u!1001 &1405337709
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19132,6 +19372,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 122453079}
     m_Modifications:
+    - target: {fileID: 1810843828704976, guid: 6a5bede2b731a0044949586a597664dd, type: 3}
+      propertyPath: m_TagString
+      value: Metal
+      objectReference: {fileID: 0}
     - target: {fileID: 4708759706121472, guid: 6a5bede2b731a0044949586a597664dd, type: 3}
       propertyPath: m_RootOrder
       value: 34
@@ -20118,6 +20362,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 122453079}
     m_Modifications:
+    - target: {fileID: 1521169486626968, guid: c5c41937c51018d4a9f4837ad25b5685, type: 3}
+      propertyPath: m_TagString
+      value: Metal
+      objectReference: {fileID: 0}
     - target: {fileID: 4732136700331324, guid: c5c41937c51018d4a9f4837ad25b5685, type: 3}
       propertyPath: m_RootOrder
       value: 61
@@ -20221,6 +20469,10 @@ PrefabInstance:
     - target: {fileID: 1749191158182758, guid: 20f4f62c18281654793d781f6b6595ed, type: 3}
       propertyPath: m_Name
       value: Factory2Floor02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1749191158182758, guid: 20f4f62c18281654793d781f6b6595ed, type: 3}
+      propertyPath: m_TagString
+      value: Stone
       objectReference: {fileID: 0}
     - target: {fileID: 4729685610027646, guid: 20f4f62c18281654793d781f6b6595ed, type: 3}
       propertyPath: m_RootOrder
@@ -20406,6 +20658,10 @@ PrefabInstance:
     - target: {fileID: 1880573944120230, guid: 8d7783033df995f4f87d7cd4b44ddc3d, type: 3}
       propertyPath: m_Name
       value: Factory2Floor01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1880573944120230, guid: 8d7783033df995f4f87d7cd4b44ddc3d, type: 3}
+      propertyPath: m_TagString
+      value: Stone
       objectReference: {fileID: 0}
     - target: {fileID: 4170048859081958, guid: 8d7783033df995f4f87d7cd4b44ddc3d, type: 3}
       propertyPath: m_RootOrder
@@ -21416,6 +21672,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Factory1Stairs02 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1487541380901968, guid: 00b4ec2f0cab3cb428a5c9200344fe9c, type: 3}
+      propertyPath: m_TagString
+      value: Metal
+      objectReference: {fileID: 0}
     - target: {fileID: 4649622374665120, guid: 00b4ec2f0cab3cb428a5c9200344fe9c, type: 3}
       propertyPath: m_RootOrder
       value: 46
@@ -21647,6 +21907,10 @@ PrefabInstance:
     - target: {fileID: 1521169486626968, guid: c5c41937c51018d4a9f4837ad25b5685, type: 3}
       propertyPath: m_Name
       value: Factory1Stairs01 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521169486626968, guid: c5c41937c51018d4a9f4837ad25b5685, type: 3}
+      propertyPath: m_TagString
+      value: Metal
       objectReference: {fileID: 0}
     - target: {fileID: 4732136700331324, guid: c5c41937c51018d4a9f4837ad25b5685, type: 3}
       propertyPath: m_RootOrder
@@ -22158,6 +22422,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Factory1Stairs05 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1532556961297136, guid: 30efe2829927a3644b46e2e1b291dbed, type: 3}
+      propertyPath: m_TagString
+      value: Metal
+      objectReference: {fileID: 0}
     - target: {fileID: 4645516805591864, guid: 30efe2829927a3644b46e2e1b291dbed, type: 3}
       propertyPath: m_RootOrder
       value: 57
@@ -22584,6 +22852,10 @@ PrefabInstance:
     - target: {fileID: 1487541380901968, guid: 00b4ec2f0cab3cb428a5c9200344fe9c, type: 3}
       propertyPath: m_Name
       value: Factory1Stairs02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487541380901968, guid: 00b4ec2f0cab3cb428a5c9200344fe9c, type: 3}
+      propertyPath: m_TagString
+      value: Metal
       objectReference: {fileID: 0}
     - target: {fileID: 4649622374665120, guid: 00b4ec2f0cab3cb428a5c9200344fe9c, type: 3}
       propertyPath: m_RootOrder
@@ -23166,15 +23438,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3166934744099305314, guid: a4fbbedfe3657904ca25d0e06f2f374c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.441
+      value: -20.134
       objectReference: {fileID: 0}
     - target: {fileID: 3166934744099305314, guid: a4fbbedfe3657904ca25d0e06f2f374c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0022162
+      value: 0.223
       objectReference: {fileID: 0}
     - target: {fileID: 3166934744099305314, guid: a4fbbedfe3657904ca25d0e06f2f374c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -30.201
+      value: -2.061
       objectReference: {fileID: 0}
     - target: {fileID: 3166934744099305314, guid: a4fbbedfe3657904ca25d0e06f2f374c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -23653,6 +23925,10 @@ PrefabInstance:
     - target: {fileID: 1521169486626968, guid: c5c41937c51018d4a9f4837ad25b5685, type: 3}
       propertyPath: m_Name
       value: Factory1Stairs01 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521169486626968, guid: c5c41937c51018d4a9f4837ad25b5685, type: 3}
+      propertyPath: m_TagString
+      value: Metal
       objectReference: {fileID: 0}
     - target: {fileID: 4732136700331324, guid: c5c41937c51018d4a9f4837ad25b5685, type: 3}
       propertyPath: m_RootOrder
@@ -24973,6 +25249,135 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e28acf57f55cba44fb043549e79783a5, type: 3}
+--- !u!1 &1824455936
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1824455938}
+  - component: {fileID: 1824455937}
+  m_Layer: 0
+  m_Name: Ambient
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1824455937
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824455936}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 5ff0dc96863ccdb45904ef59590c2318, type: 2}
+  m_audioClip: {fileID: 8300000, guid: ba8c3a99a9485eb419f3ae65631c2d1b, type: 3}
+  m_Resource: {fileID: 8300000, guid: ba8c3a99a9485eb419f3ae65631c2d1b, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1824455938
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824455936}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.414711, y: 4.4610915, z: -23.522497}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1825739873
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25256,6 +25661,10 @@ PrefabInstance:
     - target: {fileID: 1487541380901968, guid: 00b4ec2f0cab3cb428a5c9200344fe9c, type: 3}
       propertyPath: m_Name
       value: Factory1Stairs02 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487541380901968, guid: 00b4ec2f0cab3cb428a5c9200344fe9c, type: 3}
+      propertyPath: m_TagString
+      value: Metal
       objectReference: {fileID: 0}
     - target: {fileID: 4649622374665120, guid: 00b4ec2f0cab3cb428a5c9200344fe9c, type: 3}
       propertyPath: m_RootOrder
@@ -25912,6 +26321,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Factory2Floor02 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1749191158182758, guid: 20f4f62c18281654793d781f6b6595ed, type: 3}
+      propertyPath: m_TagString
+      value: Stone
+      objectReference: {fileID: 0}
     - target: {fileID: 4729685610027646, guid: 20f4f62c18281654793d781f6b6595ed, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -26411,6 +26824,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Factory1Stairs05 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1532556961297136, guid: 30efe2829927a3644b46e2e1b291dbed, type: 3}
+      propertyPath: m_TagString
+      value: Metal
+      objectReference: {fileID: 0}
     - target: {fileID: 4645516805591864, guid: 30efe2829927a3644b46e2e1b291dbed, type: 3}
       propertyPath: m_RootOrder
       value: 51
@@ -26580,7 +26997,8 @@ PrefabInstance:
       value: 3.5527137e-15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1331313662873344, guid: 04233d19d5893ef47b80d081a6822bdd, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04233d19d5893ef47b80d081a6822bdd, type: 3}
@@ -27566,6 +27984,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 122453079}
     m_Modifications:
+    - target: {fileID: 1521169486626968, guid: c5c41937c51018d4a9f4837ad25b5685, type: 3}
+      propertyPath: m_TagString
+      value: Metal
+      objectReference: {fileID: 0}
     - target: {fileID: 4732136700331324, guid: c5c41937c51018d4a9f4837ad25b5685, type: 3}
       propertyPath: m_RootOrder
       value: 43
@@ -27963,6 +28385,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 122453079}
     m_Modifications:
+    - target: {fileID: 1899671981156196, guid: f408bb1102049ad4abaee7b30fd52c5a, type: 3}
+      propertyPath: m_TagString
+      value: Metal
+      objectReference: {fileID: 0}
     - target: {fileID: 4062201381635182, guid: f408bb1102049ad4abaee7b30fd52c5a, type: 3}
       propertyPath: m_RootOrder
       value: 62
@@ -28013,6 +28439,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 122453079}
     m_Modifications:
+    - target: {fileID: 1789410238604880, guid: 180fb3373abc17a40851180a5796d9e6, type: 3}
+      propertyPath: m_TagString
+      value: Metal
+      objectReference: {fileID: 0}
     - target: {fileID: 4581440648453384, guid: 180fb3373abc17a40851180a5796d9e6, type: 3}
       propertyPath: m_RootOrder
       value: 59
@@ -28718,7 +29148,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &2031687384
 Light:
   m_ObjectHideFlags: 0
@@ -29835,6 +30265,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Factory1Stairs02 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1487541380901968, guid: 00b4ec2f0cab3cb428a5c9200344fe9c, type: 3}
+      propertyPath: m_TagString
+      value: Metal
+      objectReference: {fileID: 0}
     - target: {fileID: 4649622374665120, guid: 00b4ec2f0cab3cb428a5c9200344fe9c, type: 3}
       propertyPath: m_RootOrder
       value: 58
@@ -30194,31 +30628,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7434901531093606623, guid: 053d09f7cc0ed5e44b9ce832dda0f33f, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.76294553
+      value: 0.15800099
       objectReference: {fileID: 0}
     - target: {fileID: 7434901531093606623, guid: 053d09f7cc0ed5e44b9ce832dda0f33f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.027798714
+      value: 0.920817
       objectReference: {fileID: 0}
     - target: {fileID: 7434901531093606623, guid: 053d09f7cc0ed5e44b9ce832dda0f33f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.07487107
+      value: 0.31174862
       objectReference: {fileID: 0}
     - target: {fileID: 7434901531093606623, guid: 053d09f7cc0ed5e44b9ce832dda0f33f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.64151055
+      value: 0.17304459
       objectReference: {fileID: 0}
     - target: {fileID: 7434901531093606623, guid: 053d09f7cc0ed5e44b9ce832dda0f33f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 3.075
+      value: 10.55
       objectReference: {fileID: 0}
     - target: {fileID: 7434901531093606623, guid: 053d09f7cc0ed5e44b9ce832dda0f33f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -711.366
+      value: -565.11096
       objectReference: {fileID: 0}
     - target: {fileID: 7434901531093606623, guid: 053d09f7cc0ed5e44b9ce832dda0f33f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 280.116
+      value: -579.76404
       objectReference: {fileID: 0}
     - target: {fileID: 7829352596128443513, guid: 053d09f7cc0ed5e44b9ce832dda0f33f, type: 3}
       propertyPath: m_Color.b
@@ -30259,3 +30693,5 @@ SceneRoots:
   - {fileID: 1661591014}
   - {fileID: 1322683972}
   - {fileID: 1251072794}
+  - {fileID: 1824455938}
+  - {fileID: 1394967063}

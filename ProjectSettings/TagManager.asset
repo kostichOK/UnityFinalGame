@@ -10,6 +10,10 @@ TagManager:
   - points
   - CN
   - CS
+  - Stone
+  - Metal
+  - Trava
+  - Wood
   layers:
   - Default
   - TransparentFX

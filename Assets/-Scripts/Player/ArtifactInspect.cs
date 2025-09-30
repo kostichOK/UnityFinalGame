@@ -14,6 +14,11 @@ public class ArtifactInspection : MonoBehaviour
     public GameObject pointLight;
     public GameObject cursorNormal;
     public GameObject cursorSee;
+    public Interactble interactble;
+    public ItemInspection itemInsp;
+    public ArtifactManager artifactManager;
+    public AudioSource audioSource;
+
 
     private Transform currentItem;
     private GameObject currentArtifact;
@@ -31,23 +36,20 @@ public class ArtifactInspection : MonoBehaviour
         else
         {
             RotateItem();
-            CheckPickup(); // Нажатие E → выключение предмета
+            CheckPickup(); // Нажатие E → выключение артефакта
         }
     }
 
     private void HandleRaycast()
     {
         Ray ray = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-
         if (Physics.Raycast(ray, out RaycastHit hit, 5f, interactLayer))
         {
-
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && !inspecting)
             {
-                if (hit.transform != null && !inspecting)
-                {
-                    StartCoroutine(StartInspect(hit.transform));
-                }
+                itemInsp.enabled = false;
+                currentArtifact = hit.collider.gameObject;
+                StartCoroutine(StartInspect(hit.transform));
             }
         }
     }
@@ -66,12 +68,15 @@ public class ArtifactInspection : MonoBehaviour
 
     private void CheckPickup()
     {
-        // Нажатие E → "собираем" артефакт (просто скрываем)
         if (Input.GetKeyDown(KeyCode.E) && itemReady)
         {
             if (currentArtifact != null)
             {
-                currentArtifact.SetActive(false); // как будто положили в рюкзак
+                // Выключаем артефакт на сцене
+                audioSource.Play();
+                currentArtifact.SetActive(false);
+                itemInsp.enabled = true;
+                artifactManager.CollectArtifact();
             }
             ResetInspection();
         }
@@ -79,13 +84,13 @@ public class ArtifactInspection : MonoBehaviour
 
     private IEnumerator StartInspect(Transform itemTransform)
     {
+        itemInsp.enabled = true;
         inspecting = true;
-        currentArtifact = itemTransform.gameObject;
         currentItem = itemTransform;
         originalPos = itemTransform.position;
         originalRot = itemTransform.rotation;
+        cursorSee.SetActive(false); 
 
-        // Отключаем физику на время осмотра
         if (itemTransform.TryGetComponent<Rigidbody>(out Rigidbody rb))
         {
             rb.velocity = Vector3.zero;

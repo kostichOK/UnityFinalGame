@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Door : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Door : MonoBehaviour
     public GameObject cursorNormal;
     public GameObject cursorSee;
     public LayerMask interactLayer;
+    public NavMeshObstacle navMeshObstacle;
+    public AudioSource audioSource;
     private bool isOpen = false;
 
     private void Start()
@@ -43,12 +46,16 @@ public class Door : MonoBehaviour
     {
         isOpen = true;
         animator.SetBool("isOpen", true);
+        navMeshObstacle.enabled = false;
+        audioSource.Play();
     }
 
     public void Close()
     {
         isOpen = false;
         animator.SetBool("isOpen", false);
+        navMeshObstacle.enabled = true;
+        audioSource.Play();
     }
 
     private void ComprobarDoor()

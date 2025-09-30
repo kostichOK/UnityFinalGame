@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -16,7 +17,11 @@ public class EnemyAI : MonoBehaviour
 
     private bool playerSeen = false;
     private float lostPlayerTimer = 0f;
-    public float lostPlayerCooldown = 2f; // сколько секунд ждать перед возвратом к патрулю
+    public float lostPlayerCooldown = 10f; // сколько секунд ждать перед возвратом к патрулю
+
+    public AudioSource audioSource;
+    public float fadeOutDuration = 2f; // время затухания музыки
+    private Coroutine fadeCoroutine;
 
     void Start()
     {
@@ -24,7 +29,6 @@ public class EnemyAI : MonoBehaviour
 
         if (pointsManager != null && pointsManager.positionsCount() > 0)
         {
-            Debug.Log("aaaaa");
             transform.position = pointsManager.GetPosition(0);
             agent.SetDestination(pointsManager.GetPosition(0));
         }
@@ -38,6 +42,20 @@ public class EnemyAI : MonoBehaviour
         {
             lostPlayerTimer = 0f;
             agent.SetDestination(player.position);
+
+            // Включаем музыку погони, если она ещё не играет
+            if (!audioSource.isPlaying)
+            {
+                audioSource.volume = 1f;
+                audioSource.Play();
+
+                // Если шло затухание, останавливаем его
+                if (fadeCoroutine != null)
+                {
+                    StopCoroutine(fadeCoroutine);
+                    fadeCoroutine = null;
+                }
+            }
         }
         else
         {
@@ -46,6 +64,12 @@ public class EnemyAI : MonoBehaviour
             if (lostPlayerTimer >= lostPlayerCooldown)
             {
                 Patrol();
+
+                // Запускаем плавное затухание музыки, если она играет
+                if (audioSource.isPlaying && fadeCoroutine == null)
+                {
+                    fadeCoroutine = StartCoroutine(FadeOutMusic());
+                }
             }
         }
     }
@@ -89,6 +113,23 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    private IEnumerator FadeOutMusic()
+    {
+        float startVolume = audioSource.volume;
+        float t = 0f;
+
+        while (t < fadeOutDuration)
+        {
+            t += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(startVolume, 0f, t / fadeOutDuration);
+            yield return null;
+        }
+
+        audioSource.Stop();
+        audioSource.volume = 1f;
+        fadeCoroutine = null;
+    }
+
     void OnDrawGizmos()
     {
         Vector3 origin = transform.position + rayOriginOffset;
@@ -100,7 +141,6 @@ public class EnemyAI : MonoBehaviour
         {
             float angle = startAngle + i * angleStep;
             Vector3 direction = Quaternion.Euler(0, angle, 0) * transform.forward;
-
             if (Physics.Raycast(origin, direction, out RaycastHit hit, visionRange))
             {
                 Gizmos.color = hit.collider.CompareTag("Player") ? Color.green : Color.red;

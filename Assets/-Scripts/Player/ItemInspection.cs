@@ -10,6 +10,7 @@ public class ItemInspection : MonoBehaviour
     public Camera playerCam;
     public LayerMask interactLayer;
     public LayerMask interactLayer2;
+    public LayerMask interactLayer3;
     public GameObject postProcessVolume;
     public MonoBehaviour playerMovement;
     public MonoBehaviour playerLook;
@@ -66,7 +67,6 @@ public class ItemInspection : MonoBehaviour
                     }
                 }
             }
-            
         }
     }
 

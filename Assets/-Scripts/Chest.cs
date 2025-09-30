@@ -13,6 +13,8 @@ public class Chest : MonoBehaviour
 
     private Animator animator; // допустим, у сундука анимация
     private Collider chestCollider;
+    public AudioSource audioSource;
+
 
     private void Awake()
     {
@@ -66,10 +68,12 @@ public class Chest : MonoBehaviour
             if (instant)
             {
                 animator.SetTrigger("OpenChest"); // сразу в конце анимации
+                
             }
             else
             {
                 animator.SetTrigger("Open");
+                audioSource.Play();
             }
         }
 

@@ -6,6 +6,7 @@ public class FlashLight : MonoBehaviour
 {
     public GameObject GameObject;
     bool isTurnedOn = false;
+    public AudioSource audioSource;
 
     private void Update()
     {
@@ -19,11 +20,13 @@ public class FlashLight : MonoBehaviour
             {
                 isTurnedOn = true;
                 GameObject.SetActive(true);
+                audioSource.Play();
             }
             else
             {
                 isTurnedOn = false;
                 GameObject.SetActive(false);
+                audioSource.Play();
             }
         }
     }
