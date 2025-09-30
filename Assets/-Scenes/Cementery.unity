@@ -4788,43 +4788,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7434901531093606623, guid: 053d09f7cc0ed5e44b9ce832dda0f33f, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.1499737
+      value: -0.46386042
       objectReference: {fileID: 0}
     - target: {fileID: 7434901531093606623, guid: 053d09f7cc0ed5e44b9ce832dda0f33f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.45901024
+      value: 0.13422309
       objectReference: {fileID: 0}
     - target: {fileID: 7434901531093606623, guid: 053d09f7cc0ed5e44b9ce832dda0f33f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.6547707
+      value: 0.5587758
       objectReference: {fileID: 0}
     - target: {fileID: 7434901531093606623, guid: 053d09f7cc0ed5e44b9ce832dda0f33f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.58145756
+      value: 0.674231
       objectReference: {fileID: 0}
     - target: {fileID: 7434901531093606623, guid: 053d09f7cc0ed5e44b9ce832dda0f33f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -244.043
+      value: -118.597
       objectReference: {fileID: 0}
     - target: {fileID: 7434901531093606623, guid: 053d09f7cc0ed5e44b9ce832dda0f33f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 50.429
+      value: 135.179
       objectReference: {fileID: 0}
     - target: {fileID: 7434901531093606623, guid: 053d09f7cc0ed5e44b9ce832dda0f33f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 1002.88
+      value: 816.573
       objectReference: {fileID: 0}
     - target: {fileID: 7829352596128443513, guid: 053d09f7cc0ed5e44b9ce832dda0f33f, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7829352596128443513, guid: 053d09f7cc0ed5e44b9ce832dda0f33f, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7829352596128443513, guid: 053d09f7cc0ed5e44b9ce832dda0f33f, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7829352596128443513, guid: 053d09f7cc0ed5e44b9ce832dda0f33f, type: 3}
       propertyPath: m_BoundingSphereOverride.w
